@@ -9,7 +9,6 @@ import java.util.Objects;
 public class Stack {
     private Object[] elements;
     private int size;
-    private int stackQuantity;
     private int cardinality;
 
     /**
@@ -43,7 +42,7 @@ public class Stack {
      * @return int with the total of elements on the stack.
      */
     public int stackTotal() {
-        return this.stackQuantity;
+        return this.cardinality + 1;
     }
 
     /**
@@ -51,7 +50,7 @@ public class Stack {
      * @return boolean with true if the stack is empty and false if not.
      */
     public boolean isEmpty() {
-        return this.stackQuantity <= 0;
+        return this.cardinality <= 0;
     }
 
     /**
@@ -59,7 +58,7 @@ public class Stack {
      * @return boolean with true if the stack has space to insert a element and false if not.
      */
     public boolean hasSpace() {
-        return (this.stackQuantity < this.size);
+        return (this.cardinality + 1 < this.size);
     }
 
     /**
@@ -68,7 +67,7 @@ public class Stack {
      * @return boolean with true if the object is on the stack and false if not.
      */
     public boolean isOnStack(Object obj) {
-        for (int i = 0; i < this.stackQuantity; i++) {
+        for (int i = 0; i < this.cardinality + 1; i++) {
             if (this.elements[i].equals(obj)) {
                 return true;
             }
@@ -115,7 +114,6 @@ public class Stack {
             System.out.println("Overflow!");
         } else {
             this.cardinality++;
-            this.stackQuantity++;
             this.elements[this.cardinality] = obj;
         }
     }
